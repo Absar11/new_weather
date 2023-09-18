@@ -14,7 +14,7 @@ getFromSessionStorage();
 
 
 function switchTab(newTab){
-    if(clickedTab != oldTab){
+    if(newTab != oldTab){
         oldTab.classList.remove("current-tab");
         oldTab = newTab;
         oldTab.classList.add("current-tab");
@@ -71,10 +71,10 @@ async function fetchUserWeatherInfo(coordinates){
     // API call
     try{
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat},&lon=${lon}&appid=${API_KEY}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
             );
         
-        const data =  await response.JSON();
+        const data =  await response.json();
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
         // this function is to fetch values form the data and put it to userInfoContainer
